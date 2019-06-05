@@ -1,1 +1,217 @@
-<html><h1>Testing</h1></html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Apple Keynote Bingo!</title>
+        <meta name="description" content="Play Apple Keynote Bingo!" />
+
+        <meta property="og:title" content="Apple Keynote Bingo!" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Apple Keynote Bingo!" />
+        <meta property="og:url" content="https://keynotebingo.github.io/" />
+        <meta property="og:description" content="It’s time to play Apple Keynote Bingo!" />
+        <meta property="og:image" content="static/images/share.jpg" />
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:url" content="https://keynotebingo.github.io/">
+        <meta name="twitter:title" content="Apple Keynote Bingo!">
+        <meta name="twitter:description" content="It’s time to play Apple Keynote Bingo!">
+        <meta name="twitter:image" content="static/images/share.jpg">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="static/styles/styles.css">
+        <link rel="shortcut icon" type="image/png" href="static/images/favicon.png">
+        <link rel="apple-touch-icon-precomposed" href="static/images/apple-touch-icon.png">
+
+        <script>
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-29707119-1']);
+            _gaq.push(['_trackPageview']);
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1 class="my-4 display-1">Apple Keynote Bingo!</h1>
+                <h2 class="mb-4">WWDC 2019 Edition</h2>
+            </header>
+
+            <div id="bingo">
+                <h1 class="my-4 display-1">BINGO!</h1>
+                <a class="btn btn-dark" href="?">Play again?</a>
+            </div>
+
+            <table id="bingoCard" class="my-4">
+                <tbody id="playCard">
+                </tbody>
+            </table>
+
+            <footer>
+                <a class="btn btn-outline-dark mr-2" href="?">New Bingo Card</a>
+                <a class="btn btn-outline-dark ml-2" target="_blank" href="http://twitter.com/intent/tweet?text=I+am+playing+Apple+Keynote+Bingo!&url=https%3A%2F%2Fkeynotebingo.github.io%2F&hashtags=AppleKeynoteBingo">Tweet This</a>
+                <p class="mt-4 small">
+                    Made with love in Edinburgh, Scotland by <a target="_blank" href="http://twitter.com/patrickhmason">@patrickhmason</a> and <a target="_blank" href="http://twitter.com/davidmoss">@davidmoss</a>
+                </p>
+            </footer>
+        </div>
+
+        <script>
+            strings = [
+                "Tim Cook",
+                "Phil Schiller",
+                "Sir Jony Ive",
+                "Eddy Cue",
+                "Tim Cook’s thin, watery smile",
+                "Inane fratboy-esque whooping from the audience",
+                "Advert",
+                "Here comes the finance bit!",
+                "Keyboard related comments obviously passed through 5 lawyers",
+                "Minimal Viable Admission the keyboards were a mistake",
+                "Failure again to recognise that people eat sandwiches over their keyboard",
+                "Least acknowedgly acknowledgment the keyboards were a mistake",
+                "New display only usable by a single MacBook Pro you can’t buy yet",
+                "New Pride strap - there’s only so many ways you can rearrange the🏳️‍🌈, folks",
+                "A new app that looks OK, but nothing special",
+                "“We hope you like it”",
+                "“We think it’s great”",
+                "“Here it is”",
+                "“Let me show it to you”",
+                "“Boom!/Bam!” or other onomatopoeic word",
+                "“Billion”",
+                "A tweet that just says “oooh” followed by a bunch of hashtags",
+                "Retweet of Oatmeal cartoon about owning an Apple product",
+                "Disappointment as all the rumours turn out to be EXACTLY true",
+                "Nice independent software maker totally undermined by a new feature",
+                "Smiling children in an emerging market play with an iPad",
+                "Stealthy upgrade to a product not mentioned in the Keynote",
+                "Stealthy downgrade to MacBook to retain price point",
+                "Introducing WWDC Kiss-Cam proves a mistake",
+                "First “hands-on” from CNet that is anything but",
+                "Price point slightly too high, but not high enough to stop you buying",
+                "EXCRUCIATING third party demo",
+                "New, fairly dreary, feature gets ridiculous name (e.g. “Power Station”)",
+                "“I’ll never get used to that!” *gets used to it almost immediately*",
+                "Poorly implemented cloud features",
+                "Phil Schiller serves some Samsung- or Google-baiting shade",
+                "Home automate ALL THE THINGS",
+                "“Partnership”",
+                "“It’s available in beta, right now”",
+                "Everyone loses their shit about something technical",
+                "Apple Pay stats",
+                "Eddy Cue does some dad dancing",
+                "“We love music, but you wouldn’t think so given this closing performance”",
+                "Dreadful skit",
+                "Enterprise! Woo yeah! *rolls eyes*",
+                "You get a Pro thing, You get a Pro thing, EVERYBODY GETS A PRO THING!",
+                "Lots of iPhone-shot pictures of smiling Caucasians",
+                "Further attempt to fix the Apple TV remote with software update",
+                "New Apple TV screensavers",
+                "Super-earnest medical research VT",
+                "Siri can now misunderstand you in a wider variety of home automation circumstances",
+                "Footage of pleasingly diverse (for Apple) employees in a glass meeting room",
+                "Beyond-acceptable pricing, magically justifying itself by Friday",
+                "HOW MUCH?!?!?",
+                "They’re good phones, Brent",
+                "Apple’s lack of diversity manifests itself on stage once again",
+                "MOAR WATCH STRAPS",
+                "[a Drag Race GIF that perfectly illustrates something]",
+                "Losing track of the number of things Steve Jobs would never have allowed",
+                "Serenity Caldwell!",
+                "Vague promises of innovation to come",
+                "Male presenters undo yet another shirt button",
+                "Game demo presenters frantically trying to IPO before everyone wises up",
+                "Even the presenters look bored of the Game Demo this year",
+                "Audience camera shows the ATP crew",
+                "Shot of AR stuff on a table",
+                "Lots of people using AR like it’s a thing people do.",
+                "As yet unsyndicated but heavily torrented TV show now on TV Plus",
+                "TV Plus categories: “GOT rip-offs”, ‘RPDR rip-offs” and “food porn rip-offs”",
+                "Old-timey Apple blogger laments death of iTunes",
+                "“People actually loved the FKA twigs HomePod advert more than the Product”",
+                "“People (all 5 of them) love the HomePod”",
+                "Previously called out sales figure suspiciously moved into Misc",
+                "Customer Sat proves people ❤️ the notch",
+                "Still impossible to use iOS as your main computer if your job is anything other than writing a blog",
+                "Over 50 new clunky workarounds for poorly implemented iOS/watchOS features",
+                "“Shall we try social networking again?”",
+                "“Still in FileSystem denial on the iPad Pro”",
+                "“Only we can do this, and then forget to add it to the Mac”",
+                "Pro features, but still impossible to do any sort of hotel booking or car purchase via the web",
+                "Most versatile operating system yet, but still can’t render an animated GIF at full speed",
+                "Split view is now over 45% less discoverable",
+                "New Mac Pro impractical for most users",
+                "New Mac Pro not pro enough",
+                "Who could this evil, data-hungry, unnamed advertising company be?!?"
+            ]
+
+            function shuffle(array) {
+                var currentIndex = array.length;
+                var temporaryValue;
+                var randomIndex;
+                while (0 !== currentIndex) {
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+                    temporaryValue = array[currentIndex];
+                    array[currentIndex] = array[randomIndex];
+                    array[randomIndex] = temporaryValue;
+                }
+                return array;
+            }
+
+            var shuffled_strings = shuffle(strings);
+            el_playcard = document.getElementById('playCard');
+            for(var row = 0; row < 5; row += 1) {
+                el_row = el_playcard.insertRow(-1);
+
+                for(var col = 0; col < 5; col += 1) {
+                    el_cell = el_row.insertCell(0);
+                    if(row == 2 && col == 2) {
+                        el_cell.innerHTML = 'Free<br /><br /><br />Space';
+                        el_cell.classList.add('marked-free');
+                    }
+                    else {
+                        el_cell.innerHTML = shuffled_strings.pop();
+                        el_cell.addEventListener('click', mark_cell, false);
+                    }
+                }
+            }
+
+            var bingo_counter = 0;
+
+            var marked_sound = new Audio('static/sounds/eep.wav');
+            marked_sound.load();
+            var bingo_sound = new Audio('static/sounds/indigo.wav');
+            bingo_sound.load();
+
+            function mark_cell(cell) {
+                cell.srcElement.removeEventListener('click', mark_cell);
+                cell.srcElement.classList.add('marked');
+                bingo_counter++;
+
+                if(bingo_counter === 24) {
+                    document.querySelectorAll('td').forEach(function (e) {
+                        e.classList.add('rotate-out');
+                    });
+                    bingo_sound.play();
+                    window.setTimeout(function() {
+                        play_again = document.getElementById('bingo');
+                        play_again.classList.add('bounce-in');
+                        play_again.style.display = 'block';
+
+                        bingoCard = document.getElementById('bingoCard');
+                        bingoCard.style.visibility = 'hidden';
+                    }, 400);
+                }
+                else {
+                    marked_sound.play();
+                }
+            }
+        </script>
+    </body>
+</html>
